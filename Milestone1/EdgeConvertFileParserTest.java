@@ -1,6 +1,5 @@
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.junit.Assume.*;
 import java.io.*;
 
 /**
@@ -44,7 +43,6 @@ public class TestEdgeConvertFileParser
       catch(IOException ioe)
       {
          fail("The parseEdgeFile method has failed. IOException is thrown");
-         assumeNoException(ioe);
       }
    }
    
