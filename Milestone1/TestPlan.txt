@@ -1,0 +1,136 @@
+﻿Test Plan
+Authors: Greg, Ellison, Brianna, and Ben
+ 
+Our test suite will cover all of the code necessary to complete JUnit testing of the
+Edge Diagrammer System. Each component within each of the six java files will be tested 
+to ensure not only that it works under the correct conditions, but also that it does not 
+perform unexpected ways under incorrect conditions. We will test each of the methods in 
+the each of the four classes individually. 
+
+
+Summary of classes as follows:
+* EdgeFieldTest.java
+* EdgeFileParserTest.java
+* EdgeConnectorTest.java
+* CreateDDLMySQLTest.java
+* EdgeTableTest.java
+* EdgeConvertCreateDLLTest.java
+
+
+ 
+Class EdgeFieldTest.java
+*  testGetNumFigure()
+   * Test Description: Testing that the method returns the correct variable: 1. 
+*  testGetName()
+   * Test Description: Testing that the method returns the correct variable: “testName”.
+*  testSetTableID()
+   * Test Description: Testing that the method sets the variable to: 0
+*  testGetTableID()
+   * Test Description: Testing that the method returns the correct variable: 0
+*  testSetTableBound()
+   * Test Description: Testing that the method sets the the variable to: 0.
+*  testGetTableBound()
+   * Test Description: Testing that the method returns the correct variable: 0.
+*  testSetFieldBound()
+   * Test Description: Testing that the method sets the variable to: 0
+*  testGetFieldBound()
+   * Test Description: Testing that the method returns the correct variable: 0
+*  testSetDisallowNull()
+   * Test Description: Testing that the method sets the variable to false
+*  testGetDisallowNull()
+   * Test Description: Testing that the method does not return Null value
+*  testGetIsPrimaryKeyl()
+   * Test Description: Testing that the method sets primary key value: false
+*  testGetIsPrimaryKeyl()
+   * Test Description: Testing that the method returns primary key value: false
+*  testSetDefaultValue()
+   * Test Description: Testing that the method sets the variable to a null value
+*  testGetDefaultValue()
+   * Test Description: Testing that the method returns the null value.
+* testSetVarcharValue()
+   * Test Description: Testing that the method sets the variable: 1.
+*  testGetVarcharValue()
+   * Test Description: Testing that the method returns the correct variable: 1.
+*  testSetDataType()
+   * Test Description: Testing that the method sets the variable: 1
+*  testGetDataType()
+   * Test Description: Testing that the method returns the correct variable: 1
+*  testGetStrDataType()
+   * Test Description: Testing that the method returns an array of String variables.
+*  testToString()
+   * Test Description: Test that the method returns the values set in the Constructor method. 
+
+
+Class EdgeFileParserTest.java
+* testParseEdgeFile()
+   * Test Description: Test that the file was parsed correctly and matches output
+* testGetEdgeTables()
+   * Test Description: Test that the file is parsed without throwing errors
+* testGetEdgeFields()
+   * Test Description: Test that the object returned is not null
+* testOpenFile()
+   * Test Description: Test that the object returned is not null
+
+
+Class EdgeConnectorTest.java
+* testGetNumConnector()
+   * Test Description: Testing that the method returns the correct int variable
+* testGetEndPoint1()
+   * Test Description: Testing that the method returns the correct end point int value
+* testGetEndPoint2()
+   * Test Description: Testing that the method returns the correct end point int value
+* testGetEndStyle1()
+   * Test Description: Testing that the method returns the correct String value
+* testGetEndStyle2()
+   * Test Description: esting that the method returns the correct String value
+* testGetIsEP1Field()
+   * Test Description: Testing that the method returns the correct Boolean value (false)
+* testGetIsEP2Field() 
+   * Test Description: Testing that the method returns the correct Boolean value (false)
+* testGetIsEP1Table()
+   * Test Description: Testing that the method returns the correct Boolean value (false)l
+* testGetIsEP2Table()
+   * Test Description: Testing that the method returns the correct Boolean value (false)
+* testSetIsEP1Field()
+   * Test Description: Testing that the method sets the correct Boolean value (true)
+* testSetIsEP2Field()
+   * Test Description: Test Description: esting that the method sets the correct Boolean value (true)
+* testSetIsEP1Table() 
+   * Test Description: testing that the method sets the correct Boolean value (true)
+* testSetIsEP2Table() 
+   * Test Description: testing that the method sets the correct Boolean value (true)
+
+
+Class CreateDDLMySQLTest.java
+* testCreateDDL()
+   * TestDescription: Testing that the method ran and set the database name
+* generateDatabaseName()
+   * TestDescription: Testing that the database name that was chosen is returned
+* getDatabaseName()
+   * TestDescription: Testing that the database name is returned 
+* getProductName()
+   * TestDescription: Testing that the product name is returned
+* getSQLString()
+   * TestDescription: Testing that the String is not empty
+
+
+Class EdgeTableTest.java
+* testGetNumFigure()
+   * TestDescription:  Testing that the method returns the correct variable: 1. 
+* testGetName()
+   * Test Description: Testing that the method returns the correct variable: “TESTABLE”.
+* TestGetRelatedTablesArray()
+   * Test Description: Testing that the method returns the an array of int values, each = 2.
+* TestGetRelatedFieldsArray()
+   * Test Description: Testing that the method returns the an array of int values, each = 2.
+* TestGetNativeFieldsArray()
+   * Test Description: Testing that the method returns the an array of int values, each = 3
+*  testToString()
+   * Test Description: Test that the method returns the values set data for Table 1.
+
+
+Class EdgeConvertCreateDLLTest.java
+* defaultGetTable()
+   * Test Description: Testing that getTables returns the correct table with an id of 3
+* defaultGetField()
+   * Test Description: Testing that getField returns the correct field info with an id of 2
