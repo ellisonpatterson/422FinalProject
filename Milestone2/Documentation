@@ -1,7 +1,7 @@
-Documentation
-ISTE 422.02
-Brianna Buttaccio, Ellison Patterson, Ben Polstra, & Greg Zahn
-March 1, 2016
+##Documentation##
+##ISTE 422.02##
+##Brianna Buttaccio, Ellison Patterson, Ben Polstra, & Greg Zahn##
+##March 1, 2016##
 
 #Test Plan#
 
@@ -150,4 +150,6 @@ integrated into the TDD cycle.
 >4. Refactor the code.
 >5. If it succeeds go back to step 1.  If it fails tests for bugs.
 
+To refactor the code, we will need to test the current code to see how it functions and also 
+test if the methods are operating as they are required.  As you can see above in Image 1, 
 
