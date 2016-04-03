@@ -1,0 +1,35 @@
+Main
+	Loads GUI
+		Open EDGE File, Open Save File
+			Loads tables from Edge file
+				When clicking a table
+					Loads all fields in that table
+					Reorder the field that you have selected by clicking the arrows
+
+					When clicking a field
+						Loads attributes and what they are defined as.
+						Allows you to define its attributes.
+
+						If you click VarChar
+							Lets you set a varchar
+						else
+							default attribute selection
+				Define Relations
+					When clicking a table with relations
+						loads 'Fields in Tables with Relations', 'Related Tables'
+							When clicking a 'Related Tables'
+								Loads 'Fields in Related Tables'
+									When clicking a 'Fields in Related Tables'
+										Allows you to 'Bind/Unbind Relation'
+										When clicking 'Bind/Unbind Relation'
+											Takes the selected 'Fields in Tables with Relations' and binds it to the selected 'Fields in Related Tables'
+					Click 'Create DDL'
+						Creates the DDL
+				Save As
+					Lets you save the edge file
+		Exit
+			Quits the program
+		Set Output File Definition Location
+			Let's you set a directory (seems to be broken)
+		Help -> About
+			Shows an about screen
