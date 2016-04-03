@@ -12,8 +12,8 @@ Main
 
 						If you click VarChar
 							Lets you set a varchar
-						else
-							default attribute selection
+
+						default attribute selection
 				Define Relations
 					When clicking a table with relations
 						loads 'Fields in Tables with Relations', 'Related Tables'
