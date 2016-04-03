@@ -150,12 +150,13 @@ development methodology for this project.
 
 We decided to rule out using waterfall, spiral, pair programming, scrum, iterative, and agile 
 manifesto development methodologies for the following reasons.  We do not have a strict timeline 
-and there were no stated budget restrictions. Therefore, the waterfall method does not work for 
-this assignment. The project needs to get done and there is no option to cancel the project.  So, 
-spiral method should not be used.  Because our team members' skill levels vary greatly, pair 
-programming would not be effective.  Our team has conflicting schedules and we are not always able 
-to meet as a group.  Since daily meetings are very important when using scrum, we should not use 
-this method. Iterative model and agile manifesto would have been viable methods.  Both involve 
+and there were no stated budget restrictions. The waterfall method does not work for this 
+assignment, due to heavy refactoring. The project needs to get done and there is no option to 
+cancel the project and there are no risks that are needed to consider or manage.  So, spiral 
+method should not be used.  Because our team members' skill levels vary greatly, pair programming 
+would not be effective.  Our team has conflicting schedules and we are not always able to meet 
+as a group.  Since daily meetings are very important when using scrum, we should not use this 
+method. Iterative model and agile manifesto would have been viable methods.  Both involve 
 refactoring and allow for adaptation as unexpected requirements come up.  However, we concluded 
 that TDD aligns perfectly with the requirements for this project, which subsequently ruled out 
 iterative model and agile manifesto. 
