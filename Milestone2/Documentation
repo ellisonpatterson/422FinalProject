@@ -133,14 +133,12 @@ Class EdgeConvertCreateDLLTest.java
 
 #SDLC#
 
-The best development methodology for the project would be test-driven development (TDD).  
-We were given a project that was started by a programmer who has left the company and it is 
-functional.  Our job is to refactor the code to make it reusable and extensible.  We also 
-need to redesign the program so it can handle creating tables on different DBMS and to replace 
-Edge Diagrammer with another tool.  We are proposing to use TDD because our responsibility is 
-to refactor and redesign several components of the code and TDD works great for projects where 
-there are requirements of what the end product should be and in addition, refactoring is 
-integrated into the TDD cycle.  
+We were given a project that was started by a programmer who has left the company and the code
+is already functional.  Our job is to refactor the code to make it reusable and extensible.  We 
+also need to redesign the program so it can handle creating tables on different DBMS and to replace 
+Edge Diagrammer with another tool.  Our responsibility is to refactor and redesign several 
+components of the code.  We are proposing that test-driven development (TDD) would be the best 
+development methodology for this project. 
 
 >Test driven development strategy:
 >1. We will run through each of our test cases and check to see if they fail
@@ -150,6 +148,25 @@ integrated into the TDD cycle.
 >4. Refactor the code.
 >5. If it succeeds go back to step 1.  If it fails tests for bugs.
 
-To refactor the code, we will need to test the current code to see how it functions and also 
-test if the methods are operating as they are required.  As you can see above in Image 1, 
+We decided to rule out using waterfall, spiral, pair programming, scrum, iterative, and agile 
+manifesto development methodologies for the following reasons.  We do not have a strict timeline 
+and there were no stated budget restrictions. Therefore, the waterfall method does not work for 
+this assignment. The project needs to get done and there is no option to cancel the project.  So, 
+spiral method should not be used.  Because our team members' skill levels vary greatly, pair 
+programming would not be effective.  Our team has conflicting schedules and we are not always able 
+to meet as a group.  Since daily meetings are very important when using scrum, we should not use 
+this method. Iterative model and agile manifesto would have been viable methods.  Both involve 
+refactoring and allow for adaptation as unexpected requirements come up.  However, we concluded 
+that TDD aligns perfectly with the requirements for this project, which subsequently ruled out 
+iterative model and agile manifesto. 
 
+We decided to use TDD for the following reasons.  To refactor the code and alter specific 
+sections of the code, as assigned, we will need to test the current code to see how it functions 
+and also test if the methods are operating as they should.  TDD works well for this project because 
+refactoring is integrated into the TDD cycle.  As you can see in Image1, writing tests and 
+refactoring code is an integral part of the TDD cycle. TDD also works great for projects where 
+there are requirements of what the end product should be.  We were already given complete code, so 
+the definition of how the code is supposed to function is already defined for us.  We are also 
+required to change some behavior of the code, but those changes were clearly specified.  The steps 
+we would logically take to refactor and alter the code are a part of the TDD methodology, so it 
+makes sense to use TDD. 
