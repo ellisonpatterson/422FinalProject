@@ -10,18 +10,20 @@ import java.io.*;
 public class EdgeConvertTest{
    EdgeConvertTest ecfp;
    File file;
+   TestData data;
    
    public EdgeConvertTest(TestData data){
-      setUp(data);
+      this.data = data;
+      setUp();
       testParseEdgeFile();
       testGetEdgeTables();
       testGetEdgeFields();
    }
    
    @Before
-   public void setUp(TestData data)throws Exception {
+   public void setUp()throws Exception {
       //file = new File("Courses.edg");
-      file = new File(edgeFileName);
+      file = new File(data.edgeFileName);
       ecfp = new EdgeConvertFileParser(file);   
    }
    
