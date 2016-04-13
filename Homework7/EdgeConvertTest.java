@@ -5,56 +5,44 @@ import java.io.*;
 /**
 *Author:
 *  Benjamin Polstra
-*
-*Note: the following methods cannot be tested
-*  due to their accessibility being private:
-*  -resolveConnectors
-*  -makeArrays
-*  -isTableDup
-*
-*Professor has explicitly said that parseSaveFile method
-*  should not be tested, so it is ignored
-*
-*Finally, I'm not sure how I can test the openFile method,
-*   so let me know what I should do. Other than that, 
-*   let me know you have any other concern regarding to
-*   this file. Thanks!
 */
 
-public class TestEdgeConvertFileParser
-{
-   EdgeConvertFileParser ecfp;
+public class EdgeConvertTest{
+   EdgeConvertTest ecfp;
    File file;
    
+   public EdgeConvertTest(TestData data){
+      setUp(data);
+      testParseEdgeFile();
+      testGetEdgeTables();
+      testGetEdgeFields();
+   }
+   
    @Before
-   public void setUp()throws Exception
-   {
-      file = new File("Courses.edg");
+   public void setUp(TestData data)throws Exception {
+      //file = new File("Courses.edg");
+      file = new File(edgeFileName);
       ecfp = new EdgeConvertFileParser(file);   
    }
    
    @Test
-   public void testParseEdgeFile()
-   {
+   public void testParseEdgeFile(){
       try{
          ecfp.parseEdgeFile();
          assertTrue("The parseEdgeFile method is successful", true);
       }
-      catch(IOException ioe)
-      {
+      catch(IOException ioe){
          fail("The parseEdgeFile method has failed. IOException is thrown");
       }
    }
    
    @Test
-   public void testGetEdgeTables()
-   {
+   public void testGetEdgeTables(){
       assertNotNull("The array of EdgeTable is not null", ecfp.getEdgeTables());
    }
    
    @Test
-   public void testGetEdgeFields()
-   {
+   public void testGetEdgeFields(){
       assertNotNull("The array of EdgeField is not null", ecfp.getEdgeFields());
    }
 }
