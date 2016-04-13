@@ -6,24 +6,20 @@ public class MainTester {
 
         System.out.println("\n--- BEGIN TESTING ---\n");
 
-		System.out.println("    Running Edge Field Tester...");
-		EdgeFieldTest eft = new EdgeFieldTest();
+	System.out.println("    Running Edge Field Tester...");
+	EdgeConvertTest ect = new EdgeConvertTest();
         System.out.println("    ...SUCCESSFUL EXECUTION. Passed all tests.\n");
 
-		System.out.println("    Running Edge Table Tester...");
-        EdgeTableTest ett = new EdgeTableTest();
-        System.out.println("    ...SUCCESSFUL EXECUTION. Passed all tests.\n");
-
-		System.out.println("    Running Edge Connector Tester...");  
-		EdgeConnectorTest ect = new EdgeConnectorTest();
-        System.out.println("    ...SUCCESSFUL EXECUTION. Passed all tests.\n"); 
-
-        System.out.println("    Running Edge Convert Create DDL Tester...");
-		EdgeConvertCreateDDLTest eccddlt = new EdgeConvertCreateDDLTest();
+	System.out.println("    Running Edge Table Tester...");
+        CreateDDLTest cdt = new CreateDDLTest;
         System.out.println("    ...SUCCESSFUL EXECUTION. Passed all tests.\n");
 
         System.out.println("\n--- FINISH TESTING ---\n");
 
         System.out.println("*** END OF MAIN TESTER ***");
 	}
+}
+
+public class TestData{
+	
 }
