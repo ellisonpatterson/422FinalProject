@@ -10,11 +10,17 @@ import static org.junit.Assume.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CreateDDLMySQLTest {
-   CreateDDLMySQL testObj;
+public class CreateDDLTest {
+   CreateDDL testObj;
+   TestData data;
+   
+   public CreateDDLTest(TestData data){
+   	this.data = data;
+   	setUp();
+   }
 
    @Before
-	public void setUp() throws Exception {
+   public void setUp() throws Exception {
       EdgeTable[] inputTables = new EdgeTable[1];
       inputTables[0] = new EdgeTable("1|TESTTABLE");
                         
@@ -25,8 +31,8 @@ public class CreateDDLMySQLTest {
       testObj = new CreateDDLMySQL(inputTables, inputFields);
    }
 
-	@Test
-	public void testCreateDDL() {
+   @Test
+   public void testCreateDDL() {
       testObj.createDDL();
       //representing an empty StringBuffer;
       String a = "MySQLDB";
@@ -34,26 +40,26 @@ public class CreateDDLMySQLTest {
       //the boolean should be false because the StringBuffer should have been written to
       boolean equal = a.equals(b);
       assertEquals("createDDL sets a value for databaseName",true,equal);
-	}
-   
+   }
+
    @Test
-	public void generateDatabaseName() {
+   public void generateDatabaseName() {
       assertEquals("Database name was set to default MySQLDB","MySQLDB",testObj.generateDatabaseName());
-	}
+   }
    
    @Test
-	public void getDatabaseName() {
+   public void getDatabaseName() {
       testObj.createDDL();
       assertEquals("Database name was set to default MySQLDB","MySQLDB",testObj.getDatabaseName());
-	}
+   }
    
    @Test
-	public void getProductName() {
+   public void getProductName() {
       assertEquals("Prodect name assigned to MySQL","MySQL",testObj.getProductName());
-	}
+   }
    
    @Test
-	public void getSQLString() {
+   public void getSQLString() {
       //representing an empty StringBuffer;
       String a = "";
       //The string returned when the method is called
@@ -62,6 +68,6 @@ public class CreateDDLMySQLTest {
       boolean equal = a.equals(b);
       assertEquals("The StringBuffer was written to and returns String version of StringBuffer",false,equal);
 
-	}
+   }
    
 }
