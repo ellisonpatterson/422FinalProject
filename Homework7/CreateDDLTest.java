@@ -26,11 +26,16 @@ public class CreateDDLTest {
 
    @Before
    public void setUp() throws Exception {
-      EdgeTable[] inputTables = new EdgeTable[1];
-      inputTables[0] = new EdgeTable("1|TESTTABLE");
+      //EdgeTable[] inputTables = new EdgeTable[1];
+      EdgeTable[] inputTables = new EdgeTable[data.intA];
+      //inputTables[0] = new EdgeTable("1|TESTTABLE");
+      inputTables[0] = new EdgeTable(data.intA + "|" + data.StringA);
                         
-      EdgeField[] inputFields = new EdgeField[1];
-      inputFields[0] = new EdgeField("1|testName|3|4|5|6|testName|testDefaultValue");
+      //EdgeField[] inputFields = new EdgeField[1];
+      EdgeField[] inputFields = new EdgeField[data.intA];
+      //inputFields[0] = new EdgeField("1|testName|3|4|5|6|testName|testDefaultValue");
+      inputFields[0] = new EdgeField(data.intA + "|" + data.stringB + "|" + data.intB + "|" 
+         + data.intC + "|" + data.intD + "|" + data.intE + "|" + data.stringB + "|" + data.stringC);
       
       StringBuffer sb = new StringBuffer();
       testObj = new CreateDDLMySQL(inputTables, inputFields);
@@ -40,7 +45,8 @@ public class CreateDDLTest {
    public void testCreateDDL() {
       testObj.createDDL();
       //representing an empty StringBuffer;
-      String a = "MySQLDB";
+      //String a = "MySQLDB";
+      String a = data.stringD;
       String b = testObj.getDatabaseName();
       //the boolean should be false because the StringBuffer should have been written to
       boolean equal = a.equals(b);
@@ -49,24 +55,28 @@ public class CreateDDLTest {
 
    @Test
    public void generateDatabaseName() {
-      assertEquals("Database name was set to default MySQLDB","MySQLDB",testObj.generateDatabaseName());
+      //assertEquals("Database name was set to default MySQLDB","MySQLDB",testObj.generateDatabaseName());
+      assertEquals("Database name was set to default MySQLDB",data.stringD ,testObj.generateDatabaseName());
    }
    
    @Test
    public void getDatabaseName() {
       testObj.createDDL();
-      assertEquals("Database name was set to default MySQLDB","MySQLDB",testObj.getDatabaseName());
+      //assertEquals("Database name was set to default MySQLDB","MySQLDB",testObj.getDatabaseName());
+      assertEquals("Database name was set to default MySQLDB",data.stringD ,testObj.getDatabaseName());
    }
    
    @Test
    public void getProductName() {
-      assertEquals("Prodect name assigned to MySQL","MySQL",testObj.getProductName());
+      //assertEquals("Prodect name assigned to MySQL","MySQL",testObj.getProductName());
+      assertEquals("Prodect name assigned to MySQL",data.stringE ,testObj.getProductName());
    }
    
    @Test
    public void getSQLString() {
       //representing an empty StringBuffer;
-      String a = "";
+      //String a = "";
+      String a = data.stringF;
       //The string returned when the method is called
       String b = testObj.getSQLString();
       //the boolean should be false because the StringBuffer should have been written to
