@@ -17,6 +17,11 @@ public class CreateDDLTest {
    public CreateDDLTest(TestData data){
    	this.data = data;
    	setUp();
+   	testCreateDDL();
+   	generateDatabaseName();
+   	getDatabaseName();
+   	getProductName();
+   	getSQLString();
    }
 
    @Before
