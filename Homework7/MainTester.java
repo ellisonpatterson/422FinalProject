@@ -6,15 +6,20 @@ import java.io.IOException;
 
 public class MainTester {
 	public static void main(String[] args) {
+		
 		TestData data;
-		/**
-		 if(test object)
-		 	data = testDataObject;
- 		else if (dataFile)
- 			data = parseFile(dataFile);
- 		else
- 			data = new TestData();
-		*/
+		
+		if(args[0].equals("h"))
+			display a box with the help message
+		else if(args[0].equals("n"))
+			//If an object is entered by the user, this code will run:
+			data = testObject;
+		else if(args[0].equals("f"))
+			//If a data file is entered by the user, this code will run:
+			data = parseFile(testData.txt)
+		else
+			//If nothing is entered by the user, this code will run:
+			data = new TestData();
 		
 	        runTest(TestData data);
 	}
