@@ -74,13 +74,13 @@ public class MainTester {
 
 public class TestData{
 	//CreateDDLTest data
-	public static int intA = 1;
+	public static int intA = 7;
 	public static String stringA = "TESTTABLE";
 	public static String stringB = "testName";
-	public static int intB = 3;
-	public static int intC = 4;
-	public static int intD = 5;
-	public static int intE = 6;
+	public static int intB = 8;
+	public static int intC = 9;
+	public static int intD = 10;
+	public static int intE = 11;
 	public static String stringC = "testDefaultValue";
 	public static String stringD = "MySQLDB";
 	public static String stringE = "MySQL";
