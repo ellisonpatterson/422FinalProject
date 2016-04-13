@@ -1,13 +1,19 @@
+import java.util.StringTokenizer; 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
 public class MainTester {
 	public static void main(String[] args) {
 		TestData data;
 		/**
 		 if(test object)
-		 	data = oject;
+		 	data = testDataObject;
  		else if (dataFile)
  			data = parseFile(dataFile);
  		else
- 			data = getDefaultData();
+ 			data = new TestData();
 		*/
 		
 	        runTest(TestData data);
@@ -35,7 +41,7 @@ public class MainTester {
 	
 	private static TestData getDefaultData(){
 		TestData data = new TestData();
-		
+		return data;
 		
 	}
 	
@@ -51,24 +57,25 @@ public class MainTester {
 		        tokenizer = new StringTokenizer(line, "|");
 		            
 		        while(tokenizer.hasMoreTokens()) {
-				int intA = Integer.parseInt(tokenizer.nextToken());
-				String stringA = tokenizer.nextToken();;
-				String stringB = tokenizer.nextToken();;
-				int intB = Integer.parseInt(tokenizer.nextToken());
-				int intC = Integer.parseInt(tokenizer.nextToken());
-				int intD = Integer.parseInt(tokenizer.nextToken());
-				int intE = Integer.parseInt(tokenizer.nextToken());
-				String stringC = tokenizer.nextToken();;
-				String stringD = tokenizer.nextToken();;
-				String stringE = tokenizer.nextToken();;
-				String stringF = tokenizer.nextToken();;
-				String file = tokenizer.nextToken();;
+				data.intA = Integer.parseInt(tokenizer.nextToken());
+				data.stringA = tokenizer.nextToken();;
+				data.stringB = tokenizer.nextToken();;
+				data.intB = Integer.parseInt(tokenizer.nextToken());
+				data.intC = Integer.parseInt(tokenizer.nextToken());
+				data.intD = Integer.parseInt(tokenizer.nextToken());
+				data.intE = Integer.parseInt(tokenizer.nextToken());
+				data.stringC = tokenizer.nextToken();;
+				data.stringD = tokenizer.nextToken();;
+				data.stringE = tokenizer.nextToken();;
+				data.stringF = tokenizer.nextToken();;
+				data.file = tokenizer.nextToken();;
 		        }              
 	      	}
 	        catch(IOException e){
 		        System.out.println(e);
 		        System.err.println("File name is invalid.");
 	        }
+	        return data;
 	}
 }
 
@@ -87,8 +94,4 @@ public class TestData{
 	public static String stringF = "";
 	//EdgeConvertTest data
 	public static String file = "Courses.edg";
-	
-	public TestData getDefaultData(){
-		return this;
-	}
 }
