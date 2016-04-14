@@ -2,6 +2,7 @@ import java.util.StringTokenizer;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class MainTester {
@@ -24,22 +25,29 @@ public class MainTester {
 			System.out.println(helpMessage);
          	}
 		else if(args[0].equals("n")){
-			//If an object is entered by the user, this code will run:
-			
-         
+			ArrayList<TestData> list = parseTestFile("dataFile.txt");
+			TestData data;
+			for(TestData bla: testList){
+         			if((bla.testName).equals(args[1])
+         				data = bla;
+      			} 
+      			runTest(data);
          	}
 		else if(args[0].equals("f")){
 			//If a data file is entered by the user, this code will run:
-			data = parseFile(args[1]);
+			ArrayList<TestData> list = parseFile(args[1]);
+			for(TestData data: testList){
+         			runTest(data);
+      			} 
          	}
 		else{
 			//If nothing is entered by the user, this code will run:
-			data = new TestData();
+			runTest(getDefaultData());
 		}
 	        runTest(data);
 	}
 	
-	private static void runTest(){
+	private static void runTest(TestData data){
 		System.out.println("*** MAIN TESTER ***");
 	        System.out.println("    IF failure -> Asserts error,");
 	        System.out.println("    OTHERWISE -> nothing thrown or returned (should see no output.)");
@@ -65,53 +73,105 @@ public class MainTester {
 		
 	}
 	
-	private static TestData parseFile(String fileName){
-      		TestData data = new TestData();
+	private ArrayList<TestData> parseFile(String fileName){
+      		TestData data;
       		StringTokenizer tokenizer;
+      		ArrayList<TestData> testList = new ArrayList<>();
       
 	        try{
 	         
 		        BufferedReader in = new BufferedReader (new FileReader(fileName));
 		         
 		        String line = in.readLine();
-		        tokenizer = new StringTokenizer(line, "|");
-		            
-		        while(tokenizer.hasMoreTokens()) {
-				data.intA = Integer.parseInt(tokenizer.nextToken());
-				data.stringA = tokenizer.nextToken();;
-				data.stringB = tokenizer.nextToken();;
-				data.intB = Integer.parseInt(tokenizer.nextToken());
-				data.intC = Integer.parseInt(tokenizer.nextToken());
-				data.intD = Integer.parseInt(tokenizer.nextToken());
-				data.intE = Integer.parseInt(tokenizer.nextToken());
-				data.stringC = tokenizer.nextToken();;
-				data.stringD = tokenizer.nextToken();;
-				data.stringE = tokenizer.nextToken();;
-				data.stringF = tokenizer.nextToken();;
-				data.file = tokenizer.nextToken();;
-		        }              
-	      	}
+		        
+		        while(line != null){
+		            data = new TestData();
+
+			         tokenizer = new StringTokenizer(line, "|");
+			            
+   					data.intA = Integer.parseInt(tokenizer.nextToken());
+   					data.stringA = tokenizer.nextToken();
+   					data.stringB = tokenizer.nextToken();
+   					data.intB = Integer.parseInt(tokenizer.nextToken());
+   					data.intC = Integer.parseInt(tokenizer.nextToken());
+   					data.intD = Integer.parseInt(tokenizer.nextToken());
+   					data.intE = Integer.parseInt(tokenizer.nextToken());
+   					data.stringC = tokenizer.nextToken();
+   					data.stringD = tokenizer.nextToken();
+   					data.stringE = tokenizer.nextToken();
+   					data.stringF = tokenizer.nextToken();
+   					data.file = tokenizer.nextToken();
+			       
+			         testList.add(data);
+                  line = in.readLine();
+		       }
+             
+
+	      }
 	        catch(IOException e){
 		        System.out.println(e);
 		        System.err.println("File name is invalid.");
 	        }
-	        return data;
+	        return testList;
+	}
+	
+	private ArrayList<TestData> parseDataFile(String dataFile){
+      		TestData data;
+      		StringTokenizer tokenizer;
+      		ArrayList<TestData> testList = new ArrayList<>();
+      
+	        try{
+	         
+		        BufferedReader in = new BufferedReader (new FileReader(dataFile));
+		         
+		        String line = in.readLine();
+		        
+		        while(line != null){
+		           data = new TestData();
+		           tokenizer = new StringTokenizer(line, "|");
+		            
+			   data.testName = tokenizer.nextToken();         
+   		    	   data.intA = Integer.parseInt(tokenizer.nextToken());
+   			   data.stringA = tokenizer.nextToken();
+   			   data.stringB = tokenizer.nextToken();
+   			   data.intB = Integer.parseInt(tokenizer.nextToken());
+   			   data.intC = Integer.parseInt(tokenizer.nextToken());
+   			   data.intD = Integer.parseInt(tokenizer.nextToken());
+   			   data.intE = Integer.parseInt(tokenizer.nextToken());
+   			   data.stringC = tokenizer.nextToken();
+   		 	   data.stringD = tokenizer.nextToken();
+   			   data.stringE = tokenizer.nextToken();
+   			   data.stringF = tokenizer.nextToken();
+   			   data.file = tokenizer.nextToken();
+			       
+			   testList.add(data);
+                           line = in.readLine();
+		       }
+             
+
+	        }
+	        catch(IOException e){
+		        System.out.println(e);
+		        System.err.println("File name is invalid.");
+	        }
+	        return testList;
 	}
 }
 
 class TestData {
+	public String testName = "";
 	//CreateDDLTest data
-	public static int intA = 7;
-	public static String stringA = "TESTTABLE";
-	public static String stringB = "testName";
-	public static int intB = 8;
-	public static int intC = 9;
-	public static int intD = 10;
-	public static int intE = 11;
-	public static String stringC = "testDefaultValue";
-	public static String stringD = "MySQLDB";
-	public static String stringE = "MySQL";
-	public static String stringF = "";
+	public int intA = 7;
+	public String stringA = "TESTTABLE";
+	public String stringB = "testName";
+	public int intB = 8;
+	public int intC = 9;
+	public int intD = 10;
+	public int intE = 11;
+	public String stringC = "testDefaultValue";
+	public String stringD = "MySQLDB";
+	public String stringE = "MySQL";
+	public String stringF = "";
 	//EdgeConvertTest data
-	public static String file = "Courses.edg";
+	public String file = "Courses.edg";
 }
