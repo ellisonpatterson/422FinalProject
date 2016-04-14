@@ -9,22 +9,26 @@ public class MainTester {
 		
 		TestData data;
 		
-		if(args[0].equals("h"))
-			display a box with the help message
-		else if(args[0].equals("n"))
+		if(args[0].equals("h")){
+			//display a box with the help message
+         }
+		else if(args[0].equals("n")){
 			//If an object is entered by the user, this code will run:
-			data = testObject;
-		else if(args[0].equals("f"))
+			data = (TestData)args[1];
+         
+         }
+		else if(args[0].equals("f")){
 			//If a data file is entered by the user, this code will run:
-			data = parseFile(testData.txt)
-		else
+			data = parseFile(args[1]);
+         }
+		else{
 			//If nothing is entered by the user, this code will run:
 			data = new TestData();
-		
-	        runTest(TestData data);
+		}
+	        runTest(data);
 	}
 	
-	private static void runTest();
+	private static void runTest(){
 		System.out.println("*** MAIN TESTER ***");
 	        System.out.println("    IF failure -> Asserts error,");
 	        System.out.println("    OTHERWISE -> nothing thrown or returned (should see no output.)");
@@ -84,7 +88,7 @@ public class MainTester {
 	}
 }
 
-public class TestData{
+class TestData {
 	//CreateDDLTest data
 	public static int intA = 7;
 	public static String stringA = "TESTTABLE";
