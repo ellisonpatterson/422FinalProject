@@ -25,7 +25,7 @@ public class MainTester {
          	}
 		else if(args[0].equals("n")){
 			//If an object is entered by the user, this code will run:
-			data = (TestData)args[1];
+			
          
          	}
 		else if(args[0].equals("f")){
