@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CreateDDLTest {
-   CreateDDL testObj;
+   CreateDDLMySQL testObj;
    TestData data;
    
    public CreateDDLTest(TestData data){
