@@ -7,20 +7,31 @@ import java.io.IOException;
 public class MainTester {
 	public static void main(String[] args) {
 		
-		TestData data;
+		String helpMessage = 
+			"Please type one of the following Commands:\n"
+			+"\tMainTester f {fileName}\n"
+  			+"\tn {TestData object}\n"
+  			+"\tMainTester\n\n"
+			+"f:\n" 
+			+"The thing following f is the name of the text file containing the test objects.\n"
+			+"An example file name is \"testData.txt\".\n\n"
+			+"n:\n"
+			+"The things following n is the test object.\n\n"
+			+"If you do not enter a command after MainTester, the default data will be used to run"
+			+"the tests.";
 		
 		if(args[0].equals("h")){
-			//display a box with the help message
-         }
+			System.out.println(helpMessage);
+         	}
 		else if(args[0].equals("n")){
 			//If an object is entered by the user, this code will run:
 			data = (TestData)args[1];
          
-         }
+         	}
 		else if(args[0].equals("f")){
 			//If a data file is entered by the user, this code will run:
 			data = parseFile(args[1]);
-         }
+         	}
 		else{
 			//If nothing is entered by the user, this code will run:
 			data = new TestData();
