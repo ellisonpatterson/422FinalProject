@@ -8,7 +8,7 @@ import java.io.*;
 */
 
 public class EdgeConvertTest{
-   EdgeConvertTest ecfp;
+   EdgeConvertFileParser ecfp;
    File file;
    TestData data;
    
