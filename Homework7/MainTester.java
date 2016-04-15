@@ -17,7 +17,12 @@ public class MainTester {
 			+"The thing following f is the name of the text file containing the test objects.\n"
 			+"An example file name is \"testData.txt\".\n\n"
 			+"n:\n"
-			+"The things following n is the test object.\n\n"
+			+"The things following n is the name of a test object that already exists.\n"
+         		+"The possible test objects are:\n
+         		+"\tTest1\n"
+         		+"\tTest2\n"
+         		+"\tTest3\n"
+         		+"\tTest4\n\n"
 			+"If you do not enter a command after MainTester, the default data will be used to run"
 			+"the tests.";
 		
@@ -30,16 +35,16 @@ public class MainTester {
 			for(TestData bla: list){
          			if((bla.testName).equals(args[1]))
          				testA = bla;
-      	} 
-      	runTest(testA);
-      }
+      			} 
+      			runTest(testA);
+      		}
 		else if(args[0].equals("f")){
 			//If a data file is entered by the user, this code will run:
-			ArrayList<TestData> list = parseFile(args[1]);
+			ArrayList<TestData> list = parseUserFile(args[1]);
 			for(TestData data: list){
          			runTest(data);
-         }
-      }   
+         		}
+	 	}   
 		else{
 			//If nothing is entered by the user, this code will run:
 			runTest(getDefaultData());
@@ -48,7 +53,7 @@ public class MainTester {
 	
 	private static void runTest(TestData data){
 		/*
-      System.out.println("*** MAIN TESTER ***");
+       System.out.println("*** MAIN TESTER ***");
 	        System.out.println("    IF failure -> Asserts error,");
 	        System.out.println("    OTHERWISE -> nothing thrown or returned (should see no output.)");
 	
@@ -74,7 +79,7 @@ public class MainTester {
 		
 	}
 	
-	private static ArrayList<TestData> parseFile(String fileName){
+	private static ArrayList<TestData> parseUserFile(String fileName){
       		TestData data;
       		StringTokenizer tokenizer;
       		ArrayList<TestData> testList = new ArrayList<>();
@@ -86,9 +91,9 @@ public class MainTester {
 		        String line = in.readLine();
 		        
 		        while(line != null){
-		            data = new TestData();
+		            	data = new TestData();
 
-			         tokenizer = new StringTokenizer(line, "|");
+			    	tokenizer = new StringTokenizer(line, "|");
 			            
    					data.intA = Integer.parseInt(tokenizer.nextToken());
    					data.stringA = tokenizer.nextToken();
@@ -103,12 +108,12 @@ public class MainTester {
    					data.stringF = tokenizer.nextToken();
    					data.file = tokenizer.nextToken();
 			       
-			         testList.add(data);
-                  line = in.readLine();
-		       }
+		         	testList.add(data);
+          			line = in.readLine();
+	       		}
              
 
-	      }
+		}
 	        catch(IOException e){
 		        System.out.println(e);
 		        System.err.println("File name is invalid.");
@@ -128,28 +133,26 @@ public class MainTester {
 		        String line = in.readLine();
 		        
 		        while(line != null){
-		           data = new TestData();
-		           tokenizer = new StringTokenizer(line, "|");
-		            
-			   data.testName = tokenizer.nextToken();         
-   		    	   data.intA = Integer.parseInt(tokenizer.nextToken());
-   			   data.stringA = tokenizer.nextToken();
-   			   data.stringB = tokenizer.nextToken();
-   			   data.intB = Integer.parseInt(tokenizer.nextToken());
-   			   data.intC = Integer.parseInt(tokenizer.nextToken());
-   			   data.intD = Integer.parseInt(tokenizer.nextToken());
-   			   data.intE = Integer.parseInt(tokenizer.nextToken());
-   			   data.stringC = tokenizer.nextToken();
-   		 	   data.stringD = tokenizer.nextToken();
-   			   data.stringE = tokenizer.nextToken();
-   			   data.stringF = tokenizer.nextToken();
-   			   data.file = tokenizer.nextToken();
+				data = new TestData();
+			        tokenizer = new StringTokenizer(line, "|");
+			    
+			        data.testName = tokenizer.nextToken();         
+			        data.intA = Integer.parseInt(tokenizer.nextToken());
+			        data.stringA = tokenizer.nextToken();
+   			        data.stringB = tokenizer.nextToken();
+			        data.intB = Integer.parseInt(tokenizer.nextToken());
+			        data.intC = Integer.parseInt(tokenizer.nextToken());
+			        data.intD = Integer.parseInt(tokenizer.nextToken());
+			        data.intE = Integer.parseInt(tokenizer.nextToken());
+			        data.stringC = tokenizer.nextToken();
+			        data.stringD = tokenizer.nextToken();
+			        data.stringE = tokenizer.nextToken();
+			        data.stringF = tokenizer.nextToken();
+			        data.file = tokenizer.nextToken();
 			       
-			   testList.add(data);
-                           line = in.readLine();
-		       }
-             
-
+			        testList.add(data);
+			        line = in.readLine();
+		        }
 	        }
 	        catch(IOException e){
 		        System.out.println(e);
@@ -160,7 +163,7 @@ public class MainTester {
 }
 
 class TestData {
-	public String testName = "";
+	public String testName = "DefaultTest";
 	//CreateDDLTest data
 	public int intA = 7;
 	public String stringA = "TESTTABLE";
