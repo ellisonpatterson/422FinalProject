@@ -25,30 +25,30 @@ public class MainTester {
 			System.out.println(helpMessage);
          	}
 		else if(args[0].equals("n")){
-			ArrayList<TestData> list = parseTestFile("dataFile.txt");
-			TestData data;
-			for(TestData bla: testList){
-         			if((bla.testName).equals(args[1])
-         				data = bla;
-      			} 
-      			runTest(data);
-         	}
+			ArrayList<TestData> list = parseDataFile("dataFile.txt");
+			TestData testA = null;
+			for(TestData bla: list){
+         			if((bla.testName).equals(args[1]))
+         				testA = bla;
+      	} 
+      	runTest(testA);
+      }
 		else if(args[0].equals("f")){
 			//If a data file is entered by the user, this code will run:
 			ArrayList<TestData> list = parseFile(args[1]);
-			for(TestData data: testList){
+			for(TestData data: list){
          			runTest(data);
-      			} 
-         	}
+         }
+      }   
 		else{
 			//If nothing is entered by the user, this code will run:
 			runTest(getDefaultData());
 		}
-	        runTest(data);
 	}
 	
 	private static void runTest(TestData data){
-		System.out.println("*** MAIN TESTER ***");
+		/*
+      System.out.println("*** MAIN TESTER ***");
 	        System.out.println("    IF failure -> Asserts error,");
 	        System.out.println("    OTHERWISE -> nothing thrown or returned (should see no output.)");
 	
@@ -65,6 +65,7 @@ public class MainTester {
 	        System.out.println("\n--- FINISH TESTING ---\n");
 	
 	        System.out.println("*** END OF MAIN TESTER ***");
+       */     
 	}
 	
 	private static TestData getDefaultData(){
@@ -73,7 +74,7 @@ public class MainTester {
 		
 	}
 	
-	private ArrayList<TestData> parseFile(String fileName){
+	private static ArrayList<TestData> parseFile(String fileName){
       		TestData data;
       		StringTokenizer tokenizer;
       		ArrayList<TestData> testList = new ArrayList<>();
@@ -115,7 +116,7 @@ public class MainTester {
 	        return testList;
 	}
 	
-	private ArrayList<TestData> parseDataFile(String dataFile){
+	private static ArrayList<TestData> parseDataFile(String dataFile){
       		TestData data;
       		StringTokenizer tokenizer;
       		ArrayList<TestData> testList = new ArrayList<>();
