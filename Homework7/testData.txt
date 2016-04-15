@@ -1,4 +1,0 @@
-15|TESTTABLE|testName|45|78|37|96|testDefaultValue|MySQLDB|MySQL| |Courses.edg
-34|TESTTABLE|testNameG|86|86|23|9|testDefaultValue|MySQLDB|MySQL| |Courses.edg
-23|TESTTABLE|testNameJ|3|2|7|9|testDefaultValue|MySQLDB|MySQL| |Courses.edg
-657|TESTTABLE|testNameW|93|64|26|83|testDefaultValue|MySQLDB|MySQL| |Courses.edg
