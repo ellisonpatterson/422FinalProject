@@ -1,4 +1,4 @@
-Test1|8|TESTTABLE|testNameA|3|4|5|6|testDefaultValue|MySQLDB|MySQL| |Courses.edg
-Test2|9|TESTTABLE|testNameB|3|4|5|6|testDefaultValue|MySQLDB|MySQL| |Courses.edg
-Test3|10|TESTTABLE|testNameC|3|4|5|6|testDefaultValue|MySQLDB|MySQL| |Courses.edg
-Test4|11|TESTTABLE|testNameD|3|4|5|6|testDefaultValue|MySQLDB|MySQL| |Courses.edg
+Test1|8|TESTTABLEB|testNameA|32|32|52|62|testDefaultValue|MySQLDB|MySQL| |Courses.edg
+Test2|9|TESTTABLEX|testNameB|33|43|53|63|testDefaultValue|MySQLDB|MySQL| |Courses.edg
+Test3|10|TESTTABLEQ|testNameC|34|45|55|65|testDefaultValue|MySQLDB|MySQL| |Courses.edg
+Test4|11|TESTTABLEP|testNameD|36|46|56|66|testDefaultValue|MySQLDB|MySQL| |Courses.edg
