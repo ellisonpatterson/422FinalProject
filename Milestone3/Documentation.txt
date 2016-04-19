@@ -171,3 +171,11 @@ the definition of how the code is supposed to function is already defined for us
 required to change some behavior of the code, but those changes were clearly specified.  The steps 
 we would logically take to refactor and alter the code are a part of the TDD methodology, so it 
 makes sense to use TDD. 
+
+#Deployment#
+
+First, the program source files, our test files, and the JUnit library files were aggregated into 
+one folder. The folder was then compressed into a jar file so PackJacket can hadle it.  We chose 
+to use PackJacket to deploy our code because it is open source software.  PacketJacket also wraps
+the code into an executable file to make it faster and easier for the installers. The executable 
+file will be saved as a .jar file so it can be easily executed on any operating system. 
