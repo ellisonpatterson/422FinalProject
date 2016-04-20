@@ -179,3 +179,7 @@ one folder. The folder was then compressed into a jar file so PackJacket can had
 to use PackJacket to deploy our code because it is open source software.  PacketJacket also wraps
 the code into an executable file to make it faster and easier for the installers. The executable 
 file will be saved as a .jar file so it can be easily executed on any operating system. 
+When the user receives the compressed file, double click on the file to open and follow the window
+promts. 
+Once is it downloaded, double click on the jar file in the Window explorer to execute.
+
