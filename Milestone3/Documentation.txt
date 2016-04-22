@@ -178,8 +178,8 @@ First, the program source files, our test files, and the JUnit library files wer
 one folder. The folder was then compressed into a jar file so PackJacket can hadle it.  We chose 
 to use PackJacket to deploy our code because it is open source software.  PacketJacket also wraps
 the code into an executable file to make it faster and easier for the installers. The executable 
-file will be saved as a .jar file so it can be easily executed on any operating system. 
-When the user receives the compressed file, double click on the file to open and follow the window
-promts. 
-Once is it downloaded, double click on the jar file in the Window explorer to execute.
+file will be saved as a .jar file so it can be easily executed on any operating system. When the 
+user receives the compressed file, double click on the file to open and follow the window promts. 
+Once is it downloaded, in the command promt type: 
+   java -cp Milestone3Deployment.jar RunEdgeConvert
 
