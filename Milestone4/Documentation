@@ -1,1 +1,192 @@
+##Documentation##
+##ISTE 422.02##
+##Brianna Buttaccio, Ellison Patterson, Ben Polstra, & Greg Zahn##
+##April 29, 2016##
 
+#Test Plan#
+
+Our test suite will cover all of the code necessary to complete JUnit testing of the
+Edge Diagrammer System. Each component within each of the six java files will be tested 
+to ensure not only that it works under the correct conditions, but also that it does not 
+perform unexpected ways under incorrect conditions. We will test each of the methods in 
+the each of the four classes individually. 
+
+Summary of classes as follows:
+* EdgeFieldTest.java
+* EdgeFileParserTest.java
+* EdgeConnectorTest.java
+* CreateDDLMySQLTest.java
+* EdgeTableTest.java
+* EdgeConvertCreateDLLTest.java
+ 
+Class EdgeFieldTest.java
+*  testGetNumFigure()
+   - Test Description: Testing that the method returns the correct variable: 1. 
+*  testGetName()
+   - Test Description: Testing that the method returns the correct variable: “testName”.
+*  testSetTableID()
+   - Test Description: Testing that the method sets the variable to: 0
+*  testGetTableID()
+   - Test Description: Testing that the method returns the correct variable: 0
+*  testSetTableBound()
+   - Test Description: Testing that the method sets the the variable to: 0.
+*  testGetTableBound()
+   - Test Description: Testing that the method returns the correct variable: 0.
+*  testSetFieldBound()
+   - Test Description: Testing that the method sets the variable to: 0
+*  testGetFieldBound()
+   - Test Description: Testing that the method returns the correct variable: 0
+*  testSetDisallowNull()
+   - Test Description: Testing that the method sets the variable to false
+*  testGetDisallowNull()
+   - Test Description: Testing that the method does not return Null value
+*  testGetIsPrimaryKeyl()
+   - Test Description: Testing that the method sets primary key value: false
+*  testGetIsPrimaryKeyl()
+   - Test Description: Testing that the method returns primary key value: false
+*  testSetDefaultValue()
+   - Test Description: Testing that the method sets the variable to a null value
+*  testGetDefaultValue()
+   - Test Description: Testing that the method returns the null value.
+* testSetVarcharValue()
+   - Test Description: Testing that the method sets the variable: 1.
+*  testGetVarcharValue()
+   - Test Description: Testing that the method returns the correct variable: 1.
+*  testSetDataType()
+   - Test Description: Testing that the method sets the variable: 1
+*  testGetDataType()
+   - Test Description: Testing that the method returns the correct variable: 1
+*  testGetStrDataType()
+   - Test Description: Testing that the method returns an array of String variables.
+*  testToString()
+   - Test Description: Test that the method returns the values set in the Constructor method. 
+
+Class EdgeFileParserTest.java
+* testParseEdgeFile()
+   - Test Description: Test that the file was parsed correctly and matches output
+* testGetEdgeTables()
+   - Test Description: Test that the file is parsed without throwing errors
+* testGetEdgeFields()
+   - Test Description: Test that the object returned is not null
+* testOpenFile()
+   - Test Description: Test that the object returned is not null
+
+Class EdgeConnectorTest.java
+* testGetNumConnector()
+   - Test Description: Testing that the method returns the correct int variable
+* testGetEndPoint1()
+   - Test Description: Testing that the method returns the correct end point int value
+* testGetEndPoint2()
+   - Test Description: Testing that the method returns the correct end point int value
+* testGetEndStyle1()
+   - Test Description: Testing that the method returns the correct String value
+* testGetEndStyle2()
+   - Test Description: esting that the method returns the correct String value
+* testGetIsEP1Field()
+   - Test Description: Testing that the method returns the correct Boolean value (false)
+* testGetIsEP2Field() 
+   - Test Description: Testing that the method returns the correct Boolean value (false)
+* testGetIsEP1Table()
+   - Test Description: Testing that the method returns the correct Boolean value (false)l
+* testGetIsEP2Table()
+   - Test Description: Testing that the method returns the correct Boolean value (false)
+* testSetIsEP1Field()
+   - Test Description: Testing that the method sets the correct Boolean value (true)
+* testSetIsEP2Field()
+   - Test Description: Test Description: esting that the method sets the correct Boolean value (true)
+* testSetIsEP1Table() 
+   - Test Description: testing that the method sets the correct Boolean value (true)
+* testSetIsEP2Table() 
+   - Test Description: testing that the method sets the correct Boolean value (true)
+
+Class CreateDDLMySQLTest.java
+* testCreateDDL()
+   - TestDescription: Testing that the method ran and set the database name
+* generateDatabaseName()
+   - TestDescription: Testing that the database name that was chosen is returned
+* getDatabaseName()
+   - TestDescription: Testing that the database name is returned 
+* getProductName()
+   - TestDescription: Testing that the product name is returned
+* getSQLString()
+   - TestDescription: Testing that the String is not empty
+
+Class EdgeTableTest.java
+* testGetNumFigure()
+   - TestDescription:  Testing that the method returns the correct variable: 1. 
+* testGetName()
+   - Test Description: Testing that the method returns the correct variable: “TESTABLE”.
+* TestGetRelatedTablesArray()
+   - Test Description: Testing that the method returns the an array of int values, each = 2.
+* TestGetRelatedFieldsArray()
+   - Test Description: Testing that the method returns the an array of int values, each = 2.
+* TestGetNativeFieldsArray()
+   - Test Description: Testing that the method returns the an array of int values, each = 3
+*  testToString()
+   - Test Description: Test that the method returns the values set data for Table 1.
+
+Class EdgeConvertCreateDLLTest.java
+* defaultGetTable()
+   - Test Description: Testing that getTables returns the correct table with an id of 3
+* defaultGetField()
+   - Test Description: Testing that getField returns the correct field info with an id of 2
+
+#SDLC#
+
+We were given a project that was started by a programmer who has left the company and the code
+is already functional.  Our job is to refactor the code to make it reusable and extensible.  We 
+also need to redesign the program so it can handle creating tables on different DBMS and to replace 
+Edge Diagrammer with another tool.  Our responsibility is to refactor and redesign several 
+components of the code.  We are proposing that test-driven development (TDD) would be the best 
+development methodology for this project. 
+
+>Test driven development strategy:
+>1. We will run through each of our test cases and check to see if they fail
+>2. If a test case fails (it should the first time), we will write only enough code so the 
+>test passes.
+>3. If the test passes, we will check if all the tests pass.
+>4. Refactor the code.
+>5. If it succeeds go back to step 1.  If it fails tests for bugs.
+
+We decided to rule out using waterfall, spiral, pair programming, scrum, iterative, and agile 
+manifesto development methodologies for the following reasons.  We do not have a strict timeline 
+and there were no stated budget restrictions. The waterfall method does not work for this 
+assignment, due to heavy refactoring. The project needs to get done and there is no option to 
+cancel the project and there are no risks that are needed to consider or manage.  So, spiral 
+method should not be used.  Because our team members' skill levels vary greatly, pair programming 
+would not be effective.  Our team has conflicting schedules and we are not always able to meet 
+as a group.  Since daily meetings are very important when using scrum, we should not use this 
+method. Iterative model and agile manifesto would have been viable methods.  Both involve 
+refactoring and allow for adaptation as unexpected requirements come up.  However, we concluded 
+that TDD aligns perfectly with the requirements for this project, which subsequently ruled out 
+iterative model and agile manifesto. 
+
+We decided to use TDD for the following reasons.  To refactor the code and alter specific 
+sections of the code, as assigned, we will need to test the current code to see how it functions 
+and also test if the methods are operating as they should.  TDD works well for this project because 
+refactoring is integrated into the TDD cycle.  As you can see in Image1, writing tests and 
+refactoring code is an integral part of the TDD cycle. TDD also works great for projects where 
+there are requirements of what the end product should be.  We were already given complete code, so 
+the definition of how the code is supposed to function is already defined for us.  We are also 
+required to change some behavior of the code, but those changes were clearly specified.  The steps 
+we would logically take to refactor and alter the code are a part of the TDD methodology, so it 
+makes sense to use TDD. 
+
+#Deployment#
+
+First, the program source files, our test files, and the JUnit library files were aggregated into 
+one folder. The folder was then compressed into a jar file so PackJacket can hadle it.  We chose 
+to use PackJacket to deploy our code because it is open source software.  PacketJacket also wraps
+the code into an executable file to make it faster and easier for the installers. The executable 
+file will be saved as a .jar file so it can be easily executed on any operating system. When the 
+user receives the compressed file, double click on the file to open and follow the window promts. 
+Once is it downloaded, in the command promt type: 
+   java -cp Milestone3Deployment.jar RunEdgeConvert
+   
+#Help#
+
+We used ClickHelp to create a help page for the software. In the toolbar, under Help, there is a 
+help button which links to the site below.  The help page assists users with the basic 
+functions of the software. Using ClickHelp allowed the team to work collaboratively on the help
+page.
+http://rit.clickhelp.co/home/
