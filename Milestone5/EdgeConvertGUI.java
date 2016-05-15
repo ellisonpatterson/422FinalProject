@@ -38,6 +38,7 @@ public class EdgeConvertGUI {
    private ArrayList alSubclasses, alProductNames;
    private String[] productNames;
    private Object[] objSubclasses;
+   private CreateDDLMySQL createDDL;
 
    //Define Tables screen objects
    static JFrame jfDT;
@@ -73,6 +74,10 @@ public class EdgeConvertGUI {
       radioListener = new EdgeRadioButtonListener();
       edgeWindowListener = new EdgeWindowListener();
       createDDLListener = new CreateDDLButtonListener();
+      /**
+      *ADDED THIS LINE TO ENSURE THAT getOutputClasses METHOD CAN ACCESS THIS CLASS FILE
+      */
+      createDDL = new CreateDDLMySQL();
       this.showGUI();
    } // EdgeConvertGUI.EdgeConvertGUI()
    
@@ -922,7 +927,6 @@ public class EdgeConvertGUI {
       int returnVal;
       outputDirOld = outputDir;
       alSubclasses = new ArrayList();
-      alProductNames = new ArrayList();
 
       returnVal = jfcOutputDir.showOpenDialog(null);
       
@@ -941,7 +945,7 @@ public class EdgeConvertGUI {
          outputDir = outputDirOld;
          return;
       }
-      
+
       if ((parseFile != null || saveFile != null) && outputDir != null) {
          jbDTCreateDDL.setEnabled(true);
          jbDRCreateDDL.setEnabled(true);
@@ -974,7 +978,6 @@ public class EdgeConvertGUI {
       alSubclasses.clear();
       try {
          for (int i = 0; i < resultFiles.length; i++) {
-         System.out.println(resultFiles[i].getName());
             if (!resultFiles[i].getName().endsWith(".class")) {
                continue; //ignore all files that are not .class files
             }
@@ -982,10 +985,18 @@ public class EdgeConvertGUI {
             if (resultClass.getSuperclass().getName().equals("EdgeConvertCreateDDL")) { //only interested in classes that extend EdgeConvertCreateDDL
                if (parseFile == null && saveFile == null) {
                   conResultClass = resultClass.getConstructor(paramTypesNull);
-                  } else {
+                  /**
+                  *ADDED THIS LINE TO ENSURE THAT THERE IS NO NullPointerException BEING THROWN
+                  *  WHEN INVOKING getMethod("getProduceName", null) METHOD SEVERAL LINES BELOW
+                  */
+                  objOutput = conResultClass.newInstance();
+               } 
+                  
+               else {
                   conResultClass = resultClass.getConstructor(paramTypes);
                   objOutput = conResultClass.newInstance(args);
                }
+               
                alSubclasses.add(objOutput);
                Method getProductName = resultClass.getMethod("getProductName", null);
                String productName = (String)getProductName.invoke(objOutput, null);
@@ -1272,7 +1283,7 @@ public class EdgeConvertGUI {
          if ((ae.getSource() == jmiDTHelpAbout) || (ae.getSource() == jmiDRHelpAbout)) {
             JOptionPane.showMessageDialog(null, "EdgeConvert ERD To DDL Conversion Tool\n" +
                                                 "by Stephen A. Capperell\n" +
-                                                "© 2007-2008");
+                                                "Â© 2007-2008");
          }
       } // EdgeMenuListener.actionPerformed()
    } // EdgeMenuListener
