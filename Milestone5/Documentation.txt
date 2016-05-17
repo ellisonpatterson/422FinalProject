@@ -193,9 +193,32 @@ http://rit.clickhelp.co/home/
 
 #Refactoring#
 
-There were a few bugs that we fixed first. The getOutputClasses method under EdgeConvertGUI class has a bug that prevents the “Create DDL” buttons and the "Set Output File Definition Location” menu item from setting the output directory. The buttons and menu item add EdgeMenuListener class, which listen for an action. When a button or a menu item is clicked, the actionPerformed method is invoked in EdgeMenuListener class. In turn, it invokes setOutputDir method, which also invokes getOutputClasses method. In getOutputClasses method, we added code to dynamically instantiate an object to ensure that a NullPointerException is not thrown when invoking getMethod(“getProduceName”). When an Edge file is loaded, the “Create DDL” buttons are enabled. However, the output directory is not set. When a “Create DDL” button is clicked, a new window appears and asks for the directory as the input. When canceling the operation, the same window reappears, thus generating the infinite loop. The setOutputDir method is refactored to return the boolean value to indicate whether the output directory is set. In CreateDDLButtonListener that listens to the “Create DDL” buttons under EdgeConvertGUI class, the loop block is refactored to accept the value returned by setOutputDir method. If the output directory is not set, it will break the loop and terminate the actionPerformed method’s process.
+There were a few bugs that we fixed first. The getOutputClasses method under EdgeConvertGUI class 
+has a bug that prevents the “Create DDL” buttons and the "Set Output File Definition Location” menu 
+item from setting the output directory. The buttons and menu item add EdgeMenuListener class, which 
+listen for an action. When a button or a menu item is clicked, the actionPerformed method is invoked 
+in EdgeMenuListener class. In turn, it invokes setOutputDir method, which also invokes 
+getOutputClasses method. In getOutputClasses method, we added code to dynamically instantiate an 
+object to ensure that a NullPointerException is not thrown when invoking getMethod(“getProduceName”). 
+When an Edge file is loaded, the “Create DDL” buttons are enabled. However, the output directory is 
+not set. When a “Create DDL” button is clicked, a new window appears and asks for the directory as 
+the input. When canceling the operation, the same window reappears, thus generating the infinite loop. 
+The setOutputDir method is refactored to return the boolean value to indicate whether the output 
+directory is set. In CreateDDLButtonListener that listens to the “Create DDL” buttons under 
+EdgeConvertGUI class, the loop block is refactored to accept the value returned by setOutputDir 
+method. If the output directory is not set, it will break the loop and terminate the actionPerformed 
+method’s process.
 
-We edited the code to make it abstract so that it is easy for the user to change the output DBSM. We added code that utilizes URLClassLoader class to extract the URL of each class file and then instantiates them. It allows for a class to be called dynamically rather than at runtime. It allows for proper abstraction and for any class to be called when the program is running rather than at compilation. This is to allow any custom class for DDL outputting to be loaded without having to edit any of the source code. The line after the instantiation of the new URLClassLoader is refactored to accept URLClassLoader object. When the user clicks CreateDDL and they select the output destination, they can choose which DBMS they would like to use. We have included a MariaDB to display this. 
+We edited the code to make it abstract so that it is easy for the user to change the output DBSM. We
+added code that utilizes URLClassLoader class to extract the URL of each class file and then instantiates 
+them. It allows for a class to be called dynamically rather than at runtime. It allows for proper 
+abstraction and for any class to be called when the program is running rather than at compilation. 
+This is to allow any custom class for DDL outputting to be loaded without having to edit any of the 
+source code. The line after the instantiation of the new URLClassLoader is refactored to accept 
+URLClassLoader object. When the user clicks CreateDDL and they select the output destination, they 
+can choose which DBMS they would like to use. We have included a MariaDB to display this. 
 
-We also edited the code so that the user can submit an XML file instead of an edg file. We created our own format for the XML and submitted a sample file. We added code the EdgeConvertFileParser to detect which file type the input file is based on the first line. 
+We also edited the code so that the user can submit an XML file instead of an edg file. We created 
+our own format for the XML and submitted a sample file. We added code the EdgeConvertFileParser to 
+detect which file type the input file is based on the first line. 
 
