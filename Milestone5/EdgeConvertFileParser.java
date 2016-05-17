@@ -1,6 +1,10 @@
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.xml.sax.InputSource;
+import org.w3c.dom.*;
 
 public class EdgeConvertFileParser {
    //private String filename = "test.edg";
@@ -11,6 +15,7 @@ public class EdgeConvertFileParser {
    private ArrayList alTables, alFields, alConnectors;
    private EdgeTable[] tables;
    private EdgeField[] fields;
+   private EdgeTable tempTable;
    private EdgeField tempField;
    private EdgeConnector[] connectors;
    private String style;
@@ -192,8 +197,81 @@ public class EdgeConvertFileParser {
       } // connectors for() loop
    } // resolveConnectors()
 
-   public void parseXMLFile() throws IOException {
+   public void parseXMLFile() throws IOException
+   {
+      try
+      {
+         String xmlString = this.readFile("test.xml");
+         xmlString = xmlString.substring(xmlString.indexOf('\n')+1);
 
+         Document doc = this.convertStringToDocument(xmlString);
+         NodeList nodeList = doc.getElementsByTagName("figure");
+         int index = 1;
+         for (int temp = 0; temp < nodeList.getLength(); temp++)
+         {
+            Node node = nodeList.item(temp); Element e = (Element) node;
+            
+            int tempIndex = temp + 1;
+            tempTable = new EdgeTable(tempIndex + DELIM + e.getAttribute("name"));
+
+            NodeList subList = e.getElementsByTagName("sub-figure");
+            for (int n = 0; n < subList.getLength(); n++)
+            {
+               Node tn = subList.item(n); Element te = (Element) tn;
+               tempField = new EdgeField(index + DELIM + subList.item(n).getTextContent());
+               tempField.setTableID(tempIndex);
+               alFields.add(tempField);
+               tempTable.addNativeField(index);
+               index = index + 1;
+            }
+
+            alTables.add(tempTable);
+         }
+      }
+      catch (IOException e)
+      {
+         e.printStackTrace();
+      }
+   }
+
+   public Document convertStringToDocument(String xml)
+   {
+      DocumentBuilderFactory factory = null;
+      DocumentBuilder builder = null;
+      Document ret = null;
+
+      try
+      {
+         factory = DocumentBuilderFactory.newInstance();
+         builder = factory.newDocumentBuilder();
+         InputSource is = new InputSource(new StringReader(xml));
+         ret = builder.parse(is);
+      } catch (Exception e) {}
+
+      return ret;
+   }
+
+   public String readFile(String fileName) throws IOException
+   {
+      BufferedReader br = new BufferedReader(new FileReader(fileName));
+      try
+      {
+         StringBuilder sb = new StringBuilder();
+         String line = br.readLine();
+         
+         while (line != null)
+         {
+            sb.append(line);
+            sb.append("\n");
+            line = br.readLine();
+         }
+         
+         return sb.toString();
+      }
+      finally
+      {
+         br.close();
+      }
    }
 
    public void parseSaveFile() throws IOException { //this method is fucked
@@ -299,7 +377,7 @@ public class EdgeConvertFileParser {
             this.makeArrays(); //convert ArrayList objects into arrays of the appropriate Class type
             this.resolveConnectors(); //Identify nature of Connector endpoints
          } else if (currentLine.startsWith(XML_ID)) { //the file chosen is a XML file
-            this.parseJSONFile(); //parse the file
+            this.parseXMLFile(); //parse the file
             br.close();
             this.makeArrays(); //convert ArrayList objects into arrays of the appropriate Class 
          } else if (currentLine.startsWith(SAVE_ID)) { //the file chosen is a Save file created by this application
