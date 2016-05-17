@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<figures>
+	<figure name="Table1">
+		<sub-figure>id</sub-figure>
+		<sub-figure>name</sub-figure>
+		<sub-figure>age</sub-figure>
+	</figure>
+	
+	<figure name="Table2">
+		<sub-figure>yes</sub-figure>
+		<sub-figure>no</sub-figure>
+		<sub-figure>maybeso</sub-figure>
+	</figure>
+</figures>
