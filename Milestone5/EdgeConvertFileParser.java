@@ -23,6 +23,7 @@ public class EdgeConvertFileParser {
    private int numLine;
    private String endStyle1, endStyle2;
    public static final String EDGE_ID = "EDGE Diagram File"; //first line of .edg files should be this
+   public static final String XML_ID = "XML Diagram File"; //first line of .xml files should be this
    public static final String SAVE_ID = "EdgeConvert Save File"; //first line of save files should be this
    public static final String DELIM = "|";
    
@@ -190,7 +191,11 @@ public class EdgeConvertFileParser {
          }
       } // connectors for() loop
    } // resolveConnectors()
-   
+
+   public void parseXMLFile() throws IOException {
+
+   }
+
    public void parseSaveFile() throws IOException { //this method is fucked
       StringTokenizer stTables, stNatFields, stRelFields, stNatRelFields, stField;
       EdgeTable tempTable;
@@ -293,14 +298,16 @@ public class EdgeConvertFileParser {
             br.close();
             this.makeArrays(); //convert ArrayList objects into arrays of the appropriate Class type
             this.resolveConnectors(); //Identify nature of Connector endpoints
-         } else {
-            if (currentLine.startsWith(SAVE_ID)) { //the file chosen is a Save file created by this application
-               this.parseSaveFile(); //parse the file
-               br.close();
-               this.makeArrays(); //convert ArrayList objects into arrays of the appropriate Class type
-            } else { //the file chosen is something else
-               JOptionPane.showMessageDialog(null, "Unrecognized file format");
-            }
+         } else if (currentLine.startsWith(XML_ID)) { //the file chosen is a XML file
+            this.parseJSONFile(); //parse the file
+            br.close();
+            this.makeArrays(); //convert ArrayList objects into arrays of the appropriate Class 
+         } else if (currentLine.startsWith(SAVE_ID)) { //the file chosen is a Save file created by this application
+            this.parseSaveFile(); //parse the file
+            br.close();
+            this.makeArrays(); //convert ArrayList objects into arrays of the appropriate Class type
+         } else { //the file chosen is something else
+            JOptionPane.showMessageDialog(null, "Unrecognized file format");
          }
       } // try
       catch (FileNotFoundException fnfe) {
