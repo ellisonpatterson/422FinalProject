@@ -20,7 +20,7 @@ public class EdgeConvertGUI {
    public static final String DEFINE_TABLES = "Define Tables";
    public static final String DEFINE_RELATIONS = "Define Relations";
    public static final String CANCELLED = "CANCELLED";
-   private static JFileChooser jfcFile, jfcGetClass, jfcOutputDir;
+   private static JFileChooser jfcEdge, jfcGetClass, jfcOutputDir;
    private static ExampleFileFilter effEdge, effSave, effClass;
    private File parseFile, saveFile, outputFile, outputDir, outputDirOld;
    private String truncatedFilename;
@@ -43,7 +43,7 @@ public class EdgeConvertGUI {
    private ArrayList<Object> alSubclasses;
    private String[] productNames;
    private Object[] objSubclasses;
-
+   
    //Define Tables screen objects
    static JFrame jfDT;
    static JPanel jpDTBottom, jpDTCenter, jpDTCenter1, jpDTCenter2, jpDTCenterRight, jpDTCenterRight1, jpDTCenterRight2, jpDTMove;
@@ -59,7 +59,7 @@ public class EdgeConvertGUI {
    static DefaultListModel<String> dlmDTTablesAll, dlmDTFieldsTablesAll;
    static JMenuBar jmbDTMenuBar;
    static JMenu jmDTFile, jmDTOptions, jmDTHelp;
-   static JMenuItem jmiDTOpenFile, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout, jmiDTHelpHelp;
+   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout, jmiDTHelpHelp;
 
    //Define Relations screen objects
    static JFrame jfDR;
@@ -71,7 +71,7 @@ public class EdgeConvertGUI {
    static JScrollPane jspDRTablesRelations, jspDRTablesRelatedTo, jspDRFieldsTablesRelations, jspDRFieldsTablesRelatedTo;
    static JMenuBar jmbDRMenuBar;
    static JMenu jmDRFile, jmDROptions, jmDRHelp;
-   static JMenuItem jmiDROpenFile, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout, jmiDRHelpHelp;
+   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout, jmiDRHelpHelp;
 
    public EdgeConvertGUI() {
       menuListener = new EdgeMenuListener();
@@ -108,9 +108,9 @@ public class EdgeConvertGUI {
       jmDTFile = new JMenu("File");
       jmDTFile.setMnemonic(KeyEvent.VK_F);
       jmbDTMenuBar.add(jmDTFile);
-      jmiDTOpenFile = new JMenuItem("Open File");
-      jmiDTOpenFile.setMnemonic(KeyEvent.VK_E);
-      jmiDTOpenFile.addActionListener(menuListener);
+      jmiDTOpenEdge = new JMenuItem("Open Edge File");
+      jmiDTOpenEdge.setMnemonic(KeyEvent.VK_E);
+      jmiDTOpenEdge.addActionListener(menuListener);
       jmiDTOpenSave = new JMenuItem("Open Save File");
       jmiDTOpenSave.setMnemonic(KeyEvent.VK_V);
       jmiDTOpenSave.addActionListener(menuListener);
@@ -125,7 +125,7 @@ public class EdgeConvertGUI {
       jmiDTExit = new JMenuItem("Exit");
       jmiDTExit.setMnemonic(KeyEvent.VK_X);
       jmiDTExit.addActionListener(menuListener);
-      jmDTFile.add(jmiDTOpenFile);
+      jmDTFile.add(jmiDTOpenEdge);
       jmDTFile.add(jmiDTOpenSave);
       jmDTFile.add(jmiDTSave);
       jmDTFile.add(jmiDTSaveAs);
@@ -158,7 +158,7 @@ public class EdgeConvertGUI {
       jmiDTHelpHelp.addActionListener(menuListener);
       jmDTHelp.add(jmiDTHelpHelp);
 
-      jfcFile = new JFileChooser();
+      jfcEdge = new JFileChooser();
       jfcOutputDir = new JFileChooser();
       effEdge = new ExampleFileFilter("edg", "Edge Diagrammer Files");
       effSave = new ExampleFileFilter("sav", "Edge Convert Save Files");
@@ -498,9 +498,9 @@ public class EdgeConvertGUI {
       jmDRFile = new JMenu("File");
       jmDRFile.setMnemonic(KeyEvent.VK_F);
       jmbDRMenuBar.add(jmDRFile);
-      jmiDROpenFile = new JMenuItem("Open File");
-      jmiDROpenFile.setMnemonic(KeyEvent.VK_E);
-      jmiDROpenFile.addActionListener(menuListener);
+      jmiDROpenEdge = new JMenuItem("Open Edge File");
+      jmiDROpenEdge.setMnemonic(KeyEvent.VK_E);
+      jmiDROpenEdge.addActionListener(menuListener);
       jmiDROpenSave = new JMenuItem("Open Save File");
       jmiDROpenSave.setMnemonic(KeyEvent.VK_V);
       jmiDROpenSave.addActionListener(menuListener);
@@ -515,7 +515,7 @@ public class EdgeConvertGUI {
       jmiDRExit = new JMenuItem("Exit");
       jmiDRExit.setMnemonic(KeyEvent.VK_X);
       jmiDRExit.addActionListener(menuListener);
-      jmDRFile.add(jmiDROpenFile);
+      jmDRFile.add(jmiDROpenEdge);
       jmDRFile.add(jmiDROpenSave);
       jmDRFile.add(jmiDRSave);
       jmDRFile.add(jmiDRSaveAs);
@@ -885,10 +885,10 @@ public class EdgeConvertGUI {
 
    private void saveAs() {
       int returnVal;
-      jfcFile.addChoosableFileFilter(effSave);
-      returnVal = jfcFile.showSaveDialog(null);
+      jfcEdge.addChoosableFileFilter(effSave);
+      returnVal = jfcEdge.showSaveDialog(null);
       if (returnVal == JFileChooser.APPROVE_OPTION) {
-         saveFile = jfcFile.getSelectedFile();
+         saveFile = jfcEdge.getSelectedFile();
          if (saveFile.exists ()) {
             int response = JOptionPane.showConfirmDialog(null, "Overwrite existing file?", "Confirm Overwrite",
                     JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -935,7 +935,7 @@ public class EdgeConvertGUI {
       }
    }
 
-   private void setOutputDir() {
+   private boolean setOutputDir() {
       int returnVal;
       outputDirOld = outputDir;
       alSubclasses = new ArrayList<Object>();
@@ -944,7 +944,7 @@ public class EdgeConvertGUI {
       returnVal = jfcOutputDir.showOpenDialog(null);
 
       if (returnVal == JFileChooser.CANCEL_OPTION) {
-         return;
+         return false;
       }
 
       if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -956,7 +956,7 @@ public class EdgeConvertGUI {
       if (alProductNames.size() == 0) {
          JOptionPane.showMessageDialog(null, "The path:\n" + outputDir + "\ncontains no valid output definition files.");
          outputDir = outputDirOld;
-         return;
+         return false;
       }
 
       if ((parseFile != null || saveFile != null) && outputDir != null) {
@@ -967,6 +967,7 @@ public class EdgeConvertGUI {
       JOptionPane.showMessageDialog(null, "The available products to create DDL statements are:\n" + displayProductNames());
       jmiDTOptionsShowProducts.setEnabled(true);
       jmiDROptionsShowProducts.setEnabled(true);
+      return true;
    }
 
    private String displayProductNames() {
@@ -1081,7 +1082,7 @@ public class EdgeConvertGUI {
    }
 
    private void writeSQL(String output) {
-      jfcFile.resetChoosableFileFilters();
+      jfcEdge.resetChoosableFileFilters();
       String str;
       if (parseFile != null) {
          outputFile = new File(parseFile.getAbsolutePath().substring(0, (parseFile.getAbsolutePath().lastIndexOf(File.separator) + 1)) + databaseName + ".sql");
@@ -1091,10 +1092,10 @@ public class EdgeConvertGUI {
       if (databaseName.equals("")) {
          return;
       }
-      jfcFile.setSelectedFile(outputFile);
-      int returnVal = jfcFile.showSaveDialog(null);
+      jfcEdge.setSelectedFile(outputFile);
+      int returnVal = jfcEdge.showSaveDialog(null);
       if (returnVal == JFileChooser.APPROVE_OPTION) {
-         outputFile = jfcFile.getSelectedFile();
+         outputFile = jfcEdge.getSelectedFile();
          if (outputFile.exists ()) {
             int response = JOptionPane.showConfirmDialog(null, "Overwrite existing file?", "Confirm Overwrite",
                     JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -1175,7 +1176,9 @@ public class EdgeConvertGUI {
       public void actionPerformed(ActionEvent ae) {
          while (outputDir == null) {
             JOptionPane.showMessageDialog(null, "You have not selected a path that contains valid output definition files yet.\nPlease select a path now.");
-            setOutputDir();
+            if(!setOutputDir()){
+               return;
+            }
          }
          getOutputClasses(); //in case outputDir was set before a file was loaded and EdgeTable/EdgeField objects created
          sqlString = getSQLStatements();
@@ -1189,7 +1192,7 @@ public class EdgeConvertGUI {
    class EdgeMenuListener implements ActionListener {
       public void actionPerformed(ActionEvent ae) {
          int returnVal;
-         if ((ae.getSource() == jmiDTOpenFile) || (ae.getSource() == jmiDROpenFile)) {
+         if ((ae.getSource() == jmiDTOpenEdge) || (ae.getSource() == jmiDROpenEdge)) {
             if (!dataSaved) {
                int answer = JOptionPane.showConfirmDialog(null, "You currently have unsaved data. Continue?",
                        "Are you sure?", JOptionPane.YES_NO_OPTION);
@@ -1197,10 +1200,10 @@ public class EdgeConvertGUI {
                   return;
                }
             }
-            jfcFile.addChoosableFileFilter(effEdge);
-            returnVal = jfcFile.showOpenDialog(null);
+            jfcEdge.addChoosableFileFilter(effEdge);
+            returnVal = jfcEdge.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-               parseFile = jfcFile.getSelectedFile();
+               parseFile = jfcEdge.getSelectedFile();
                ecfp = new EdgeConvertFileParser(parseFile);
                tables = ecfp.getEdgeTables();
                for (int i = 0; i < tables.length; i++) {
@@ -1236,10 +1239,10 @@ public class EdgeConvertGUI {
                   return;
                }
             }
-            jfcFile.addChoosableFileFilter(effSave);
-            returnVal = jfcFile.showOpenDialog(null);
+            jfcEdge.addChoosableFileFilter(effSave);
+            returnVal = jfcEdge.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-               saveFile = jfcFile.getSelectedFile();
+               saveFile = jfcEdge.getSelectedFile();
                ecfp = new EdgeConvertFileParser(saveFile);
                tables = ecfp.getEdgeTables();
                fields = ecfp.getEdgeFields();
@@ -1304,7 +1307,7 @@ public class EdgeConvertGUI {
          if ((ae.getSource() == jmiDTHelpAbout) || (ae.getSource() == jmiDRHelpAbout)) {
             JOptionPane.showMessageDialog(null, "EdgeConvert ERD To DDL Conversion Tool\n" +
                     "by Stephen A. Capperell\n" +
-                    "© 2007-2008");
+                    "Â© 2007-2008");
          }
 
          //new code
